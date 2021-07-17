@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface IPhotoRecordDto {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+}
+
+const photoRecordsUrl = 'https://jsonplaceholder.typicode.com/photos';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +19,9 @@ import { SwUpdate } from '@angular/service-worker';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private swUpdate: SwUpdate) {}
+  public photoRecords$: Observable<IPhotoRecordDto[]> | undefined;
+
+  constructor(private swUpdate: SwUpdate, private httpClient: HttpClient) {}
 
   ngOnInit() {
     // check if browser supports Service Workers
@@ -18,5 +32,7 @@ export class AppComponent implements OnInit {
         }
       });
     }
+
+    this.photoRecords$ = this.httpClient.get<IPhotoRecordDto[]>(photoRecordsUrl);
   }
 }
