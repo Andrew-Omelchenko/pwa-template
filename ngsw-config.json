@@ -29,7 +29,7 @@
   ],
   "dataGroups": [
     {
-      "name": "images-api",
+      "name": "photo-records-api",
       "urls": [
         "https://jsonplaceholder.typicode.com/photos"
       ],
@@ -37,6 +37,17 @@
         "strategy": "performance",
         "maxAge": "1d",
         "maxSize": 100
+      }
+    },
+    {
+      "name": "image-api",
+      "urls": [
+        "https://via.placeholder.com/600/*"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxAge": "1d",
+        "maxSize": 1000
       }
     }
   ]

@@ -1,0 +1,16 @@
+.image-cards-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .image-card {
+    height: 210px;
+    width: 210px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}

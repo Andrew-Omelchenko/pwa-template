@@ -1,5 +1,7 @@
 <p>PWA V1</p>
 
-<ul>
-  <li *ngFor="let photo of (photoRecords$ | async)">{{ photo.url }}</li>
-</ul>
+<div class="image-cards-wrapper">
+  <div *ngFor="let photo of (photoRecords$ | async)" class="image-card">
+    <img [src]="photo.url" alt="image" />
+  </div>
+</div>
